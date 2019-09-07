@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace MVC5_StokTakip.Controllers
 {
-	public class HomeController : Controller
+	public class xxxHomeController : Controller
 	{
 		public ActionResult Index()
 		{

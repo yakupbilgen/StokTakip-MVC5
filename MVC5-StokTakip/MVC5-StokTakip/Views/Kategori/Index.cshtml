@@ -1,8 +1,33 @@
-﻿
+﻿@using MVC5_StokTakip.Models.Entity
+@model List<TBLKATEGORILER>
+
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Kategoriler</h2>
+<table class="table table-bordered">
+    <tr>
+        <th>Kategori ID</th>
+        <th>Kategori Adı</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+    <tbody>
+        @foreach (var ktgr in Model)
+        {
+
+        <tr>
+            <td>@ktgr.KATEGORIID</td>
+            <td>@ktgr.KATEGORIAD</td>
+            <td><a class="btn btn-danger" href="Sil/@ktgr.KATEGORIID">Sil</a></td>
+            <td><a class="btn btn-primary" href="Guncelle/@ktgr.KATEGORIID">Güncelle</a></td>
+        </tr>
+
+        }
+    </tbody>
+</table>
+
+<a class="btn btn-warning" href="YeniKategoriEkle">Yeni Kategori Ekle</a>
 

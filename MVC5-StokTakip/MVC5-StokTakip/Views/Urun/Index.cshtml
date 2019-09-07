@@ -1,0 +1,40 @@
+﻿@using MVC5_StokTakip.Models.Entity
+@model List<TBLURUNLER>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<table class="table table-bordered">
+    <tr>
+        <th>Ürün ID</th>
+        <th>Ürün Ad</th>
+        <th>Ürün Marka</th>
+        <th>Ürün Kategori</th>
+        <th>Ürün Fiyat</th>
+        <th>Ürün Stok Adet</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+    <tbody>
+        @foreach (var urun in Model)
+        {
+        <tr>
+            <td>@urun.URUNID</td>
+            <td>@urun.URUNAD</td>
+            <td>@urun.URUNMARKA</td>
+            <td>@urun.URUNKATEGORI</td>
+            <td>@urun.URUNFIYAT</td>
+            <td>@urun.URUNSTOKADET</td>
+            <td><a class="btn btn-danger" href="~/Urun/Sil/@urun.URUNID">Sil</a></td>
+            <td><a class="btn btn-primary" href="/Urun/Guncelle/@urun.URUNID">Güncelle</a></td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+<a class="btn btn-warning" href="/Urun/Ekle">Yeni Ürün Ekle</a>
+
+

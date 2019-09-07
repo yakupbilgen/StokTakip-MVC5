@@ -1,0 +1,21 @@
+﻿@using MVC5_StokTakip.Models.Entity;
+@{
+    ViewBag.Title = "YeniMusteriEkle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<form class="form-control" method="post">
+    <div>
+        <label>Müşteri Adı:</label>
+        <input class="form-control" type="text" name="MUSTERIAD" />
+    </div>
+    <div>
+        <label>Müşteri Soyadı:</label>
+        <input class="form-control" type="text" name="MUSTERISOYAD" />
+    </div>
+    <div>
+        <button class="btn btn-info">Ekle</button>
+    </div>
+</form>
+
