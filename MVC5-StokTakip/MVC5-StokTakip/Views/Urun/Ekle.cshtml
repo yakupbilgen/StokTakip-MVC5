@@ -1,4 +1,5 @@
-﻿
+﻿@model MVC5_StokTakip.Models.Entity.TBLURUNLER
+
 @{
     ViewBag.Title = "Ekle";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -14,16 +15,16 @@
         <input type="text" class="form-control" name="URUNMARKA" />
     </div>
     <div>
-        <label>ürün kategorisi:</label>
-        <input type="text" class="form-control" name="urunkategorı" />
+        <label>Ürün Kategorisi:</label>
+        @Html.DropDownListFor(m => m.TBLKATEGORILER.KATEGORIID, (List<SelectListItem>)ViewBag.dgr, new { @class = "form-control" })
     </div>
     <div>
-        <label>ürün fiyatı:</label>
-        <input type="text" class="form-control" name="urunfıyat" />
+        <label>Ürün Fiyatı:</label>
+        <input type="text" class="form-control" name="URUNFIYAT" />
     </div>
     <div>
-        <label>ürün adeti:</label>
-        <input type="text" class="form-control" name="urunstokadet" />
+        <label>Ürün Adeti:</label>
+        <input type="text" class="form-control" name="URUNSTOKADET" />
     </div>
     <div>
         <button class="btn btn-info">Ekle</button>

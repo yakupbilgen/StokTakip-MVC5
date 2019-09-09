@@ -223,9 +223,10 @@
     <Content Include="Views\Musteri\Index.cshtml" />
     <Content Include="Views\Satis\Index.cshtml" />
     <Content Include="Views\Kategori\Guncelle.cshtml" />
-    <Content Include="Views\Kategori\YeniKategoriEkle.cshtml" />
-    <Content Include="Views\Musteri\YeniMusteriEkle.cshtml" />
+    <Content Include="Views\Kategori\Ekle.cshtml" />
+    <Content Include="Views\Musteri\Ekle.cshtml" />
     <Content Include="Views\Urun\Ekle.cshtml" />
+    <Content Include="Views\Musteri\Guncelle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

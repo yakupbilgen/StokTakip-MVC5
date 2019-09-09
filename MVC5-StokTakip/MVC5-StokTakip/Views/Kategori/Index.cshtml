@@ -7,7 +7,7 @@
 }
 
 <h2>Kategoriler</h2>
-<table class="table table-bordered">
+<table class="table ">
     <tr>
         <th>Kategori ID</th>
         <th>Kategori Adı</th>
@@ -21,13 +21,13 @@
         <tr>
             <td>@ktgr.KATEGORIID</td>
             <td>@ktgr.KATEGORIAD</td>
-            <td><a class="btn btn-danger" href="Sil/@ktgr.KATEGORIID">Sil</a></td>
-            <td><a class="btn btn-primary" href="Guncelle/@ktgr.KATEGORIID">Güncelle</a></td>
+            <td><a class="btn btn-danger" href="/Kategori/Sil/@ktgr.KATEGORIID">Sil</a></td>
+            <td><a class="btn btn-primary" href="/Kategori/KategoriGetir/@ktgr.KATEGORIID">Güncelle</a></td>
         </tr>
 
         }
     </tbody>
 </table>
 
-<a class="btn btn-warning" href="YeniKategoriEkle">Yeni Kategori Ekle</a>
+<a class="btn btn-warning" href="/Kategori/Ekle">Yeni Kategori Ekle</a>
 

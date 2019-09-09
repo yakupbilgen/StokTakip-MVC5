@@ -17,24 +17,39 @@ namespace MVC5_StokTakip.Controllers
 			return View(dbgetir);
 		}
 
-		public ActionResult Sil(int item)
+		public ActionResult Sil(int id)
 		{
-			var kategorisil = db.TBLKATEGORILER.Find(item);
-			db.TBLKATEGORILER.Remove(kategorisil);
+			var findid = db.TBLKATEGORILER.Find(id);
+			db.TBLKATEGORILER.Remove(findid);
 			db.SaveChanges();
 			return RedirectToAction("Index");
 		}
 
-		[HttpPost]
-		public ActionResult Guncelle(TBLKATEGORILER item)
+
+		public ActionResult Guncelle(int id)
 		{
-			var kategoriguncelle = db.TBLKATEGORILER.Add(item);
+			var kategoriupdate = db.TBLKATEGORILER.Find(id);
+
+			return View("Guncelle", kategoriupdate);
+		}
+
+		public ActionResult Update(TBLKATEGORILER findid)
+		{
+			var update = db.TBLKATEGORILER.Find(findid);
+			update.KATEGORIAD = findid.KATEGORIAD;
 			db.SaveChanges();
+
 			return RedirectToAction("Index");
 		}
 
+		[HttpGet]
+		public ActionResult Ekle()
+		{
+			return View();
+		}
+
 		[HttpPost]
-		public ActionResult YeniKategoriEkle(TBLKATEGORILER item)
+		public ActionResult Ekle(TBLKATEGORILER item)
 		{
 			db.TBLKATEGORILER.Add(item);
 			db.SaveChanges();

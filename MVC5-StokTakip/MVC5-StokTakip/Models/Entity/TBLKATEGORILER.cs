@@ -25,5 +25,10 @@ namespace MVC5_StokTakip.Models.Entity
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TBLURUNLER> TBLURUNLER { get; set; }
-    }
+
+		internal static object ToList()
+		{
+			throw new NotImplementedException();
+		}
+	}
 }

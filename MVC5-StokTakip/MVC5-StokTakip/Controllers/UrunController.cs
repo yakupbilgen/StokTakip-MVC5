@@ -21,13 +21,32 @@ namespace MVC5_StokTakip.Controllers
 		[HttpGet]
 		public ActionResult Ekle()
 		{
+
+			List<SelectListItem> item = (from i in db.TBLKATEGORILER.ToList()
+										 select new SelectListItem
+										 {
+											 Text = i.KATEGORIAD,
+											 Value = i.KATEGORIID.ToString()
+										 }).ToList();
+			ViewBag.dgr = item;
 			return View();
 		}
 
 		[HttpPost]
 		public ActionResult Ekle(TBLURUNLER item)
 		{
+			var kategoriitem = db.TBLKATEGORILER.Where(m => m.KATEGORIID == item.TBLKATEGORILER.KATEGORIID).FirstOrDefault();
+			item.TBLKATEGORILER = kategoriitem;
 			db.TBLURUNLER.Add(item);
+			db.SaveChanges();
+
+			return RedirectToAction("Index");
+		}
+
+		public ActionResult Sil(int id)
+		{
+			var findid = db.TBLURUNLER.Find(id);
+			db.TBLURUNLER.Remove(findid);
 			db.SaveChanges();
 
 			return RedirectToAction("Index");
