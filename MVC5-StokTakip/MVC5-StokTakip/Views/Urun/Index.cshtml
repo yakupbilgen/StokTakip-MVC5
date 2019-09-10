@@ -20,6 +20,7 @@
         <th>Stok Adeti</th>
         <th>Sil</th>
         <th>Güncelle</th>
+        <th>Kontrollü Sil</th>
     </tr>
     <tbody>
         @foreach (var urun in Model)
@@ -34,6 +35,7 @@
                 <td>@urun.URUNSTOKADET</td>
                 <td><a class="btn btn-danger" href="/Urun/Delete/@urun.URUNID">Sil</a></td>
                 <td><a class="btn btn-primary" href="/Urun/Update/@urun.URUNID">Güncelle</a></td>
+                <td>@Html.ActionLink("Sil", "Delete", new { id = urun.URUNID }, new { @class = "btn btn-warning", onclick = "return confirm('Silme işlemini onaylıyor musunuz?')" })</td>
             </tr>
         }
     </tbody>

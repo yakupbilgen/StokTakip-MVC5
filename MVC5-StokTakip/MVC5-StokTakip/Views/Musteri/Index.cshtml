@@ -17,6 +17,7 @@
         <th>Müşteri Soyad</th>
         <th>Sil</th>
         <th>Güncelle</th>
+        <th>Kontrollü Sil</th>
     </tr>
     <tbody>
         @foreach (var musteri in Model)
@@ -27,6 +28,7 @@
                 <td>@musteri.MUSTERISOYAD</td>
                 <td><a class="btn btn-danger" href="/Musteri/Delete/@musteri.MUSTERIID">Sil</a></td>
                 <td><a class="btn btn-primary" href="/Musteri/Update/@musteri.MUSTERIID">Güncelle</a></td>
+                <td>@Html.ActionLink("Sil", "Delete", new { id = musteri.MUSTERIID}, new { @class = "btn btn-warning", onclick = "return confirm('Silme işlemini onaylıyor musunuz?')" })</td>
             </tr>
         }
     </tbody>

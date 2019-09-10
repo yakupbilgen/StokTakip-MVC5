@@ -15,6 +15,7 @@
         <th>Kategori Adı</th>
         <th>Sil</th>
         <th>Güncelle</th>
+        <th>Kontrollü Sil</th>
     </tr>
     <tbody>
         @foreach (var ktgr in Model)
@@ -25,6 +26,7 @@
                 <td>@ktgr.KATEGORIAD</td>
                 <td><a class="btn btn-danger" href="/Kategori/Delete/@ktgr.KATEGORIID">Sil</a></td>
                 <td><a class="btn btn-primary" href="/Kategori/Update/@ktgr.KATEGORIID">Güncelle</a></td>
+                <td>@Html.ActionLink("Sil", "Delete", new { id = ktgr.KATEGORIID }, new { @class = "btn btn-warning", onclick = "return confirm('Silme işlemini onaylıyor musunuz?')" })</td>
             </tr>
 
         }
