@@ -11,8 +11,9 @@ namespace MVC5_StokTakip.Models.Entity
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class TBLMUSTERILER
+	using System.ComponentModel.DataAnnotations;
+
+	public partial class TBLMUSTERILER
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TBLMUSTERILER()
@@ -21,8 +22,12 @@ namespace MVC5_StokTakip.Models.Entity
         }
     
         public int MUSTERIID { get; set; }
+		[Required(ErrorMessage ="Müþteri adý boþ býrakýlamaz!")]
+		[StringLength(50, ErrorMessage ="Müþteri adý 50 karakterden uzun olamaz!")]
         public string MUSTERIAD { get; set; }
-        public string MUSTERISOYAD { get; set; }
+		[Required(ErrorMessage = "Müþteri soyadý boþ býrakýlamaz!")]
+		[StringLength(50,ErrorMessage ="Müþteri soyadý 50 karakterden uzun olamaz!")]
+		public string MUSTERISOYAD { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TBLSATISLAR> TBLSATISLAR { get; set; }

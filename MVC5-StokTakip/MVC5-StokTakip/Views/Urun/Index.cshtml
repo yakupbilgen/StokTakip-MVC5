@@ -6,15 +6,15 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
+<br />
 <table class="table table-bordered">
     <tr>
-        <th>Ürün ID</th>
-        <th>Ürün Ad</th>
-        <th>Ürün Marka</th>
-        <th>Ürün Kategori</th>
-        <th>Ürün Fiyat</th>
-        <th>Ürün Stok Adet</th>
+        <th>ID</th>
+        <th>Ürün Adı</th>
+        <th>Markası</th>
+        <th>Kategorisi</th>
+        <th>Fiyatı</th>
+        <th>Stok Adeti</th>
         <th>Sil</th>
         <th>Güncelle</th>
     </tr>
@@ -26,10 +26,11 @@
             <td>@urun.URUNAD</td>
             <td>@urun.URUNMARKA</td>
             <td>@urun.TBLKATEGORILER.KATEGORIAD</td>
+            @*<td>@urun.URUNKATEGORI</td>*@
             <td>@urun.URUNFIYAT</td>
             <td>@urun.URUNSTOKADET</td>
-            <td><a class="btn btn-danger" href="/Urun/Sil/@urun.URUNID">Sil</a></td>
-            <td><a class="btn btn-primary" href="/Urun/Guncelle/@urun.URUNID">Güncelle</a></td>
+            <td><a class="btn btn-danger" href="/Urun/Delete/@urun.URUNID">Sil</a></td>
+            <td><a class="btn btn-primary" href="/Urun/Update/@urun.URUNID">Güncelle</a></td>
         </tr>
         }
     </tbody>

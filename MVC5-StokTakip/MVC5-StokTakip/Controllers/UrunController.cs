@@ -14,19 +14,19 @@ namespace MVC5_StokTakip.Controllers
         // GET: Urun
         public ActionResult Index()
         {
-			var dbgetir = db.TBLURUNLER.ToList();
-			return View(dbgetir);
+			var readitem = db.TBLURUNLER.ToList();
+			return View(readitem);
         }
 
 		[HttpGet]
 		public ActionResult Ekle()
 		{
 
-			List<SelectListItem> item = (from i in db.TBLKATEGORILER.ToList()
+			List<SelectListItem> item = (from tableitem in db.TBLKATEGORILER.ToList()
 										 select new SelectListItem
 										 {
-											 Text = i.KATEGORIAD,
-											 Value = i.KATEGORIID.ToString()
+											 Text = tableitem.KATEGORIAD,
+											 Value = tableitem.KATEGORIID.ToString()
 										 }).ToList();
 			ViewBag.dgr = item;
 			return View();
@@ -35,18 +35,48 @@ namespace MVC5_StokTakip.Controllers
 		[HttpPost]
 		public ActionResult Ekle(TBLURUNLER item)
 		{
-			var kategoriitem = db.TBLKATEGORILER.Where(m => m.KATEGORIID == item.TBLKATEGORILER.KATEGORIID).FirstOrDefault();
-			item.TBLKATEGORILER = kategoriitem;
+			var insertitem = db.TBLKATEGORILER.Where(m => m.KATEGORIID == item.TBLKATEGORILER.KATEGORIID).FirstOrDefault();
+			item.TBLKATEGORILER = insertitem;
 			db.TBLURUNLER.Add(item);
 			db.SaveChanges();
 
 			return RedirectToAction("Index");
 		}
 
-		public ActionResult Sil(int id)
+		public ActionResult Delete(int id)
 		{
-			var findid = db.TBLURUNLER.Find(id);
-			db.TBLURUNLER.Remove(findid);
+			var deleteitem = db.TBLURUNLER.Find(id);
+			db.TBLURUNLER.Remove(deleteitem);
+			db.SaveChanges();
+
+			return RedirectToAction("Index");
+		}
+
+		public ActionResult Update(int id)
+		{
+			var updateitemm = db.TBLURUNLER.Find(id);
+			List<SelectListItem> item = (from tableitem in db.TBLKATEGORILER.ToList()
+										 select new SelectListItem
+										 {
+											 Text = tableitem.KATEGORIAD,
+											 Value = tableitem.KATEGORIID.ToString()
+										 }).ToList();
+			ViewBag.dgr = item;
+			return View("Update",updateitemm);
+		}
+
+		public ActionResult UpdateMethod(TBLURUNLER item)
+		{
+			var updateitem = db.TBLURUNLER.Find(item.URUNID);
+			updateitem.URUNAD = item.URUNAD;
+			updateitem.URUNMARKA = item.URUNMARKA;
+
+			//updateitem.URUNKATEGORI = item.URUNKATEGORI;
+			var kategori = db.TBLKATEGORILER.Where(m => m.KATEGORIID == item.TBLKATEGORILER.KATEGORIID).FirstOrDefault();
+			updateitem.URUNKATEGORI= kategori.KATEGORIID;
+
+			updateitem.URUNFIYAT = item.URUNFIYAT;
+			updateitem.URUNSTOKADET = item.URUNSTOKADET;
 			db.SaveChanges();
 
 			return RedirectToAction("Index");

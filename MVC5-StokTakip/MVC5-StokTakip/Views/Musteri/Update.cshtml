@@ -1,18 +1,20 @@
 ﻿@model MVC5_StokTakip.Models.Entity.TBLMUSTERILER
 
 @{
-    ViewBag.Title = "Guncelle";
+    ViewBag.Title = "Update";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@using (Html.BeginForm("Update", "Musteri", FormMethod.Post))
+<br />
+@using (Html.BeginForm("UpdateMethod", "Musteri", FormMethod.Post))
 {
-    <div class="form-group">
+    <div class="form-group" style="margin-top:15px;">
+        <b>Müşteri ID</b>
+        @Html.TextBoxFor(m => m.MUSTERIID, new { @class = "form-control" })
+        <br />
         @Html.LabelFor(m => m.MUSTERIAD)
         @Html.TextBoxFor(m => m.MUSTERIAD, new { @class = "form-control" })
-
         <br />
-
         @Html.LabelFor(m => m.MUSTERISOYAD)
         @Html.TextBoxFor(m => m.MUSTERISOYAD, new { @class = "form-control" })
         <br />

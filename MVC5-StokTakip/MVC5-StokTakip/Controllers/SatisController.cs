@@ -14,8 +14,8 @@ namespace MVC5_StokTakip.Controllers
         // GET: Satis
         public ActionResult Index()
         {
-			var dbgetir = db.TBLSATISLAR.ToList();
-            return View(dbgetir);
+			var readitem = db.TBLSATISLAR.ToList();
+            return View(readitem);
         }
     }
 }

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MVC5_StokTakip.Models.Entity;
+using PagedList;
+using PagedList.Mvc;
 
 namespace MVC5_StokTakip.Controllers
 {
@@ -11,32 +13,34 @@ namespace MVC5_StokTakip.Controllers
 	{
 		DBStokTakipEntities db = new DBStokTakipEntities();
 		// GET: Kategori
-		public ActionResult Index()
+		public ActionResult Index(int page=1)
 		{
-			var dbgetir = db.TBLKATEGORILER.ToList();
-			return View(dbgetir);
+			//var readitem = db.TBLKATEGORILER.ToList();
+			var readitem = db.TBLKATEGORILER.ToList().ToPagedList(page,3);
+
+			return View(readitem);
 		}
 
-		public ActionResult Sil(int id)
+		public ActionResult Delete(int id)
 		{
-			var findid = db.TBLKATEGORILER.Find(id);
-			db.TBLKATEGORILER.Remove(findid);
+			var deleteitem = db.TBLKATEGORILER.Find(id);
+			db.TBLKATEGORILER.Remove(deleteitem);
 			db.SaveChanges();
 			return RedirectToAction("Index");
 		}
 
 
-		public ActionResult Guncelle(int id)
+		public ActionResult Update(int id)
 		{
-			var kategoriupdate = db.TBLKATEGORILER.Find(id);
+			var updateitemm = db.TBLKATEGORILER.Find(id);
 
-			return View("Guncelle", kategoriupdate);
+			return View("Update", updateitemm);
 		}
 
-		public ActionResult Update(TBLKATEGORILER findid)
+		public ActionResult UpdateMethod(TBLKATEGORILER item)
 		{
-			var update = db.TBLKATEGORILER.Find(findid);
-			update.KATEGORIAD = findid.KATEGORIAD;
+			var updateitem = db.TBLKATEGORILER.Find(item.KATEGORIID);
+			updateitem.KATEGORIAD = item.KATEGORIAD;
 			db.SaveChanges();
 
 			return RedirectToAction("Index");
@@ -49,9 +53,13 @@ namespace MVC5_StokTakip.Controllers
 		}
 
 		[HttpPost]
-		public ActionResult Ekle(TBLKATEGORILER item)
+		public ActionResult Ekle(TBLKATEGORILER insertitem)
 		{
-			db.TBLKATEGORILER.Add(item);
+			if(!ModelState.IsValid)
+			{
+				return View("Ekle");
+			}
+			db.TBLKATEGORILER.Add(insertitem);
 			db.SaveChanges();
 			return RedirectToAction("Index");
 		}

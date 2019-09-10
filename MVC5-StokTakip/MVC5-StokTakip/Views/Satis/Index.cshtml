@@ -6,7 +6,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
+<br />
 <table class="table table-bordered">
     <tr>
         <th>Satış ID</th>
@@ -26,11 +26,11 @@
             <td>@satis.MUSTERI</td>
             <td>@satis.ADET</td>
             <td>@satis.FIYAT</td>
-            <td><a class="btn btn-danger" href="Satis/Sil">Sil/@satis.SATISID</a></td>
-            <td><a class="btn btn-primary" href="Satis/Guncelle/@satis.SATISID">Güncelle</a></td>
+            <td><a class="btn btn-danger" href="Satis/Delete">Sil/@satis.SATISID</a></td>
+            <td><a class="btn btn-primary" href="Satis/Update/@satis.SATISID">Güncelle</a></td>
         </tr>
         }
     </tbody>
 </table>
-<a class="btn btn-warning" href="Satis/YeniSatisEkle/">Yeni Satış İşlemi Yap</a>
+<a class="btn btn-warning" href="Satis/Ekle/">Yeni Satış İşlemi Yap</a>
 

@@ -14,14 +14,14 @@ namespace MVC5_StokTakip.Controllers
         // GET: Musteri
         public ActionResult Index()
         {
-			var dbgetir = db.TBLMUSTERILER.ToList();
-            return View(dbgetir);
+			var readitem = db.TBLMUSTERILER.ToList();
+            return View(readitem);
         }
 
-		public ActionResult Sil(int id)
+		public ActionResult Delete(int id)
 		{
-			var findid = db.TBLMUSTERILER.Find(id);
-			db.TBLMUSTERILER.Remove(findid);
+			var deleteitem = db.TBLMUSTERILER.Find(id);
+			db.TBLMUSTERILER.Remove(deleteitem);
 			db.SaveChanges();
 
 			return RedirectToAction("Index");
@@ -36,29 +36,41 @@ namespace MVC5_StokTakip.Controllers
 		[HttpPost]
 		public ActionResult Ekle(TBLMUSTERILER item)
 		{
+			if(!ModelState.IsValid)
+			{
+				return View("Ekle");
+			}
 			db.TBLMUSTERILER.Add(item);
 			db.SaveChanges();
 
 			return RedirectToAction("Index");
 		}
 
-		public ActionResult Guncelle(int id)
+		public ActionResult Update(int id)
 		{
-			var musteriupdate = db.TBLMUSTERILER.Find(id);
+			var updateitemm = db.TBLMUSTERILER.Find(id);
 
-			return View("Guncelle",musteriupdate);
+			return View("Update",updateitemm);
 		}
 
-		public ActionResult Update(TBLMUSTERILER findid)
+		public ActionResult UpdateMethod(TBLMUSTERILER item)
 		{
-			var update = db.TBLMUSTERILER.Find(findid.MUSTERIID);
-			update.MUSTERIAD = findid.MUSTERIAD;
-			update.MUSTERISOYAD = findid.MUSTERISOYAD;
+			var updateitem = db.TBLMUSTERILER.Find(item.MUSTERIID);
+			updateitem.MUSTERIAD = item.MUSTERIAD;
+			updateitem.MUSTERISOYAD = item.MUSTERISOYAD;
 			db.SaveChanges();
 
 			return RedirectToAction("Index");
 		}
 
+		//public ActionResult UpdateMethod(TBLMUSTERILER p1)
+		//{
+		//	var musteri = db.TBLMUSTERILER.Find(p1.MUSTERIID);
+		//	musteri.MUSTERIAD = p1.MUSTERIAD;
+		//	musteri.MUSTERISOYAD = p1.MUSTERISOYAD;
+		//	db.SaveChanges();
 
+		//	return RedirectToAction("Index");
+		//}
     }
 }

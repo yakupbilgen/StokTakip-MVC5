@@ -5,14 +5,15 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<br />
 <form class="form-group" method="post">
     <div>
         <label>Ürün Adı:</label>
-        <input type="text" class="form-control" name="URUNAD" />
+        <input type="text" class="form-control" name="URUNAD" required="Bu alan boş bırakılamaz!" maxlength="50"/>
     </div>
     <div>
         <label>Ürün Markası:</label>
-        <input type="text" class="form-control" name="URUNMARKA" />
+        <input type="text" class="form-control" name="URUNMARKA" required="" />
     </div>
     <div>
         <label>Ürün Kategorisi:</label>
@@ -20,11 +21,11 @@
     </div>
     <div>
         <label>Ürün Fiyatı:</label>
-        <input type="text" class="form-control" name="URUNFIYAT" />
+        <input type="text" class="form-control" name="URUNFIYAT" required="" />
     </div>
     <div>
         <label>Ürün Adeti:</label>
-        <input type="text" class="form-control" name="URUNSTOKADET" />
+        <input type="text" class="form-control" name="URUNSTOKADET" required=""/>
     </div>
     <div>
         <button class="btn btn-info">Ekle</button>

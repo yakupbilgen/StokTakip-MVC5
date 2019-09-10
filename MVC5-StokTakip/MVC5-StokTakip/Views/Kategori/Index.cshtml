@@ -1,12 +1,14 @@
 ﻿@using MVC5_StokTakip.Models.Entity
-@model List<TBLKATEGORILER>
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<TBLKATEGORILER>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Kategoriler</h2>
+<br />
 <table class="table ">
     <tr>
         <th>Kategori ID</th>
@@ -21,13 +23,14 @@
         <tr>
             <td>@ktgr.KATEGORIID</td>
             <td>@ktgr.KATEGORIAD</td>
-            <td><a class="btn btn-danger" href="/Kategori/Sil/@ktgr.KATEGORIID">Sil</a></td>
-            <td><a class="btn btn-primary" href="/Kategori/KategoriGetir/@ktgr.KATEGORIID">Güncelle</a></td>
+            <td><a class="btn btn-danger" href="/Kategori/Delete/@ktgr.KATEGORIID">Sil</a></td>
+            <td><a class="btn btn-primary" href="/Kategori/Update/@ktgr.KATEGORIID">Güncelle</a></td>
         </tr>
 
         }
     </tbody>
 </table>
+@Html.PagedListPager((IPagedList)Model,page=>Url.Action("Index",new { page }))
 
 <a class="btn btn-warning" href="/Kategori/Ekle">Yeni Kategori Ekle</a>
 

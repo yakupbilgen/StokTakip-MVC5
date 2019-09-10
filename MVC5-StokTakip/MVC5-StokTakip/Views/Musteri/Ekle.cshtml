@@ -1,18 +1,26 @@
 ﻿@using MVC5_StokTakip.Models.Entity;
+@model MVC5_StokTakip.Models.Entity.TBLMUSTERILER
+
 @{
-    ViewBag.Title = "YeniMusteriEkle";
+    ViewBag.Title = "Yeni Müşteri Ekleme";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
+<br />
 <form class="form-group" method="post">
     <div>
         <label>Müşteri Adı:</label>
-        <input class="form-control" type="text" name="MUSTERIAD" />
+        @*<input class="form-control" type="text" name="MUSTERIAD" />*@
+
+        @Html.TextBoxFor(m => m.MUSTERIAD, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.MUSTERIAD, "", new { @style = "color:red" })
     </div>
     <div>
         <label>Müşteri Soyadı:</label>
-        <input class="form-control" type="text" name="MUSTERISOYAD" />
+        @*<input class="form-control" type="text" name="MUSTERISOYAD" />*@
+
+        @Html.TextBoxFor(m => m.MUSTERISOYAD, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.MUSTERISOYAD, "", new { @style = "color:red" })
     </div>
     <div>
         <button class="btn btn-info" style="margin-top:15px">Ekle</button>

@@ -6,7 +6,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
+<br />
 <table class="table table-bordered">
     <tr>
         <th>Müşteri ID</th>
@@ -22,8 +22,8 @@
                 <td>@musteri.MUSTERIID</td>
                 <td>@musteri.MUSTERIAD</td>
                 <td>@musteri.MUSTERISOYAD</td>
-            <td><a class="btn btn-danger" href="/Musteri/Sil/@musteri.MUSTERIID">Sil</a></td>
-            <td><a class="btn btn-primary" href="/Musteri/Guncelle/@musteri.MUSTERIID">Güncelle</a></td>
+            <td><a class="btn btn-danger" href="/Musteri/Delete/@musteri.MUSTERIID">Sil</a></td>
+            <td><a class="btn btn-primary" href="/Musteri/Update/@musteri.MUSTERIID">Güncelle</a></td>
             </tr>
         }
     </tbody>
