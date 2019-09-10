@@ -23,15 +23,15 @@
     <tbody>
         @foreach (var satis in Model)
         {
-        <tr>
-            <td>@satis.SATISID</td>
-            <td>@satis.URUN</td>
-            <td>@satis.MUSTERI</td>
-            <td>@satis.ADET</td>
-            <td>@satis.FIYAT</td>
-            <td><a class="btn btn-danger" href="Satis/Delete">Sil/@satis.SATISID</a></td>
-            <td><a class="btn btn-primary" href="Satis/Update/@satis.SATISID">Güncelle</a></td>
-        </tr>
+            <tr>
+                <td>@satis.SATISID</td>
+                <td>@satis.URUN</td>
+                <td>@satis.MUSTERI</td>
+                <td>@satis.ADET</td>
+                <td>@satis.FIYAT</td>
+                <td><a class="btn btn-danger" href="Satis/Delete">Sil/@satis.SATISID</a></td>
+                <td><a class="btn btn-primary" href="Satis/Update/@satis.SATISID">Güncelle</a></td>
+            </tr>
         }
     </tbody>
 </table>
