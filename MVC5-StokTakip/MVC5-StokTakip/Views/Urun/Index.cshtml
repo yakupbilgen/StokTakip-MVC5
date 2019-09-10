@@ -1,5 +1,8 @@
 ﻿@using MVC5_StokTakip.Models.Entity
-@model List<TBLURUNLER>
+@using PagedList
+@using PagedList.Mvc
+
+@model PagedList.IPagedList<TBLURUNLER>
 
 @{
     ViewBag.Title = "Index";
@@ -21,21 +24,21 @@
     <tbody>
         @foreach (var urun in Model)
         {
-        <tr>
-            <td>@urun.URUNID</td>
-            <td>@urun.URUNAD</td>
-            <td>@urun.URUNMARKA</td>
-            <td>@urun.TBLKATEGORILER.KATEGORIAD</td>
-            @*<td>@urun.URUNKATEGORI</td>*@
-            <td>@urun.URUNFIYAT</td>
-            <td>@urun.URUNSTOKADET</td>
-            <td><a class="btn btn-danger" href="/Urun/Delete/@urun.URUNID">Sil</a></td>
-            <td><a class="btn btn-primary" href="/Urun/Update/@urun.URUNID">Güncelle</a></td>
-        </tr>
+            <tr>
+                <td>@urun.URUNID</td>
+                <td>@urun.URUNAD</td>
+                <td>@urun.URUNMARKA</td>
+                <td>@urun.TBLKATEGORILER.KATEGORIAD</td>
+                @*<td>@urun.URUNKATEGORI</td>*@
+                <td>@urun.URUNFIYAT</td>
+                <td>@urun.URUNSTOKADET</td>
+                <td><a class="btn btn-danger" href="/Urun/Delete/@urun.URUNID">Sil</a></td>
+                <td><a class="btn btn-primary" href="/Urun/Update/@urun.URUNID">Güncelle</a></td>
+            </tr>
         }
     </tbody>
 </table>
-
+@Html.PagedListPager((IPagedList)Model, page => Url.Action(("Index"), new { page }))
 <a class="btn btn-warning" href="/Urun/Ekle">Yeni Ürün Ekle</a>
 
 

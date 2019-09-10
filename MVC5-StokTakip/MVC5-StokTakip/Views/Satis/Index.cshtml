@@ -1,5 +1,8 @@
 ﻿@using MVC5_StokTakip.Models.Entity
-@model List<TBLSATISLAR>
+@using PagedList
+@using PagedList.Mvc
+
+@model PagedList.IPagedList<TBLSATISLAR>
 
 @{
     ViewBag.Title = "Index";

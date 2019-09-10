@@ -1,5 +1,8 @@
 ﻿@using MVC5_StokTakip.Models.Entity
-@model List<TBLMUSTERILER>
+@using PagedList
+@using PagedList.Mvc
+
+@model PagedList.IPagedList<TBLMUSTERILER>
 
 @{
     ViewBag.Title = "Index";
@@ -28,7 +31,7 @@
         }
     </tbody>
 </table>
-
+@Html.PagedListPager((IPagedList)Model,page=>Url.Action("Index",new { page}))
 <a class="btn btn-warning" href="/Musteri/Ekle">Yeni Müşteri Ekle</a>
 
 

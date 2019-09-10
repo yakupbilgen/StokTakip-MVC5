@@ -1,25 +1,31 @@
 ﻿@model MVC5_StokTakip.Models.Entity.TBLKATEGORILER
 
 @{
-    ViewBag.Title = "Ekle";
+    ViewBag.Title = "Yeni Kategori Ekleme";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <br />
 <form class="form-group" method="post">
     @*<div>
-        <label>Kategori Adı:</label>
-        <input type="text" class="form-control" name="KATEGORIAD" />
-    </div>*@
+            <label>Kategori Adı:</label>
+            <input type="text" class="form-control" name="KATEGORIAD" />
+        </div>*@
 
     <div>
         <label>Kategori Adı:</label>
-        @Html.TextBoxFor(m=>m.KATEGORIAD, new { @class="form-control" })
-        @Html.ValidationMessageFor(m=> m.KATEGORIAD,"", new { @style = "color:red" })
+        @Html.TextBoxFor(m => m.KATEGORIAD, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.KATEGORIAD, "", new { @style = "color:red" })
     </div>
-    
+
     <div>
-        <button class="btn btn-info" style="margin-top:10px;">Ekle</button>
+        <button class="btn btn-info" style="margin-top:10px;" id="btnEkle">Ekle</button>
     </div>
+
+    <script>
+        $('#btnekle').click(function () {
+            alert('Kategori Ekleme İşlemi Başarılı');
+        });
+    </script>
 </form>
 

@@ -23,7 +23,13 @@
         @Html.ValidationMessageFor(m => m.MUSTERISOYAD, "", new { @style = "color:red" })
     </div>
     <div>
-        <button class="btn btn-info" style="margin-top:15px">Ekle</button>
+        <button class="btn btn-info" style="margin-top:10px;" id="btnEkle">Ekle</button>
     </div>
+
+    <script>
+        $('#btnekle').click(function () {
+            alert('Müşteri Ekleme İşlemi Başarılı');
+        });
+    </script>
 </form>
 
