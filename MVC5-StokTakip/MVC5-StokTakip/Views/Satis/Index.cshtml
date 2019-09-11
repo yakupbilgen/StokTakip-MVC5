@@ -1,39 +1,90 @@
 ﻿@using MVC5_StokTakip.Models.Entity
-@using PagedList
-@using PagedList.Mvc
 
-@model PagedList.IPagedList<TBLSATISLAR>
+@*
+    Paging işlemi için model bu şekilde tanımlanmalı ve 2 kütüphane eklenmeli!
+    @using PagedList
+    @using PagedList.Mvc
+    @model PagedList.IPagedList<TBLSATISLAR>
+*@
+
+@model MVC5_StokTakip.Models.Entity.TBLSATISLAR
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Satış İşlemleri";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@* Paging işlemi için, listeleme işlemi aşağıdaki şekilde olmalıdır!
+    <br />
+    <table class="table table-bordered">
+        <tr>
+            <th>Satış ID</th>
+            <th>Ürün</th>
+            <th>Müşteri</th>
+            <th>Adet</th>
+            <th>Fiyat</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+        </tr>
+        <tbody>
+            @foreach (var satis in Model)
+            {
+                <tr>
+                    <td>@satis.SATISID</td>
+                    <td>@satis.URUN</td>
+                    <td>@satis.MUSTERI</td>
+                    <td>@satis.ADET</td>
+                    <td>@satis.FIYAT</td>
+                    <td><a class="btn btn-danger" href="Satis/Delete">Sil/@satis.SATISID</a></td>
+                    <td><a class="btn btn-primary" href="Satis/Update/@satis.SATISID">Güncelle</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a class="btn btn-warning" href="Satis/Ekle/">Yeni Satış İşlemi Yap</a>
+*@
+
 <br />
-<table class="table table-bordered">
-    <tr>
-        <th>Satış ID</th>
-        <th>Ürün</th>
-        <th>Müşteri</th>
-        <th>Adet</th>
-        <th>Fiyat</th>
-        <th>Sil</th>
-        <th>Güncelle</th>
-    </tr>
-    <tbody>
-        @foreach (var satis in Model)
-        {
-            <tr>
-                <td>@satis.SATISID</td>
-                <td>@satis.URUN</td>
-                <td>@satis.MUSTERI</td>
-                <td>@satis.ADET</td>
-                <td>@satis.FIYAT</td>
-                <td><a class="btn btn-danger" href="Satis/Delete">Sil/@satis.SATISID</a></td>
-                <td><a class="btn btn-primary" href="Satis/Update/@satis.SATISID">Güncelle</a></td>
-            </tr>
-        }
-    </tbody>
-</table>
-<a class="btn btn-warning" href="Satis/Ekle/">Yeni Satış İşlemi Yap</a>
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Modal'ı Aç</button>
+<br />
+Modal ile Satış İlemini yapmak için <a href="#" class="btn" data-toggle="modal" data-target="#myModal">
+    <p class="glyphicon glyphicon-circle-arrow-right"></p>BURAYA<p class="glyphicon glyphicon-circle-arrow-left"></p>
+</a> tıklayın!
+
+
+<div class="container">
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Satış İşlemleri</h4>
+                </div>
+                <form method="post" action="/Satis/Sales">
+                    <div class="modal-body">
+                        <label>Ürün Adı:<p class="glyphicon glyphicon-apple"></p></label>
+                        @Html.TextBoxFor(m => m.URUN, new { @class = "form-control" })
+
+                        <label>Müşteri Ad Soyad:</label>
+                        @Html.TextBoxFor(m => m.MUSTERI, new { @class = "form-control" })
+
+                        <label>Adet</label>
+                        @Html.TextBoxFor(m => m.ADET, new { @class = "form-control" })
+
+                        <label>Fiyat</label>
+                        @Html.TextBoxFor(m => m.FIYAT, new { @class = "form-control" })
+                        <br />
+                        <button class="btn btn-danger">Satış işlemini kaydet</button>
+                        <button type="button" class="btn btn-warning" data-dismiss="modal">Kapat</button>
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 

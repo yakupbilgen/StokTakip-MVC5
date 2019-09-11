@@ -1,14 +1,18 @@
 ﻿@using MVC5_StokTakip.Models.Entity
-@using PagedList
-@using PagedList.Mvc
 
-@model PagedList.IPagedList<TBLMUSTERILER>
+@model List<TBLMUSTERILER>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<br />
+@using (Html.BeginForm("Index", "Musteri", FormMethod.Get))
+{
+    <label>Müşteri Adı:</label> @Html.TextBox("searchitem")
+    <button class="btn btn-info">Ara</button>
+}
 <br />
 <table class="table table-bordered">
     <tr>
@@ -28,12 +32,11 @@
                 <td>@musteri.MUSTERISOYAD</td>
                 <td><a class="btn btn-danger" href="/Musteri/Delete/@musteri.MUSTERIID">Sil</a></td>
                 <td><a class="btn btn-primary" href="/Musteri/Update/@musteri.MUSTERIID">Güncelle</a></td>
-                <td>@Html.ActionLink("Sil", "Delete", new { id = musteri.MUSTERIID}, new { @class = "btn btn-warning", onclick = "return confirm('Silme işlemini onaylıyor musunuz?')" })</td>
+                <td>@Html.ActionLink("Sil", "Delete", new { id = musteri.MUSTERIID }, new { @class = "btn btn-warning", onclick = "return confirm('Silme işlemini onaylıyor musunuz?')" })</td>
             </tr>
-        }
+            }
     </tbody>
 </table>
-@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))
 <a class="btn btn-warning" href="/Musteri/Ekle">Yeni Müşteri Ekle</a>
 
 

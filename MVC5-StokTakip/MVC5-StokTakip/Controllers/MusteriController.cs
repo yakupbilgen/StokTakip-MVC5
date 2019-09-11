@@ -4,8 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MVC5_StokTakip.Models.Entity;
-using PagedList;
-using PagedList.Mvc;
 
 namespace MVC5_StokTakip.Controllers
 {
@@ -14,10 +12,15 @@ namespace MVC5_StokTakip.Controllers
 		DBStokTakipEntities db = new DBStokTakipEntities();
 
         // GET: Musteri
-        public ActionResult Index(int page=1)
+        public ActionResult Index(string searchitem)
         {
-			var readitem = db.TBLMUSTERILER.ToList().ToPagedList(page, 5);
-            return View(readitem);
+			var selectitem = from item in db.TBLMUSTERILER select item;
+			if(!string.IsNullOrEmpty(searchitem))
+			{
+				selectitem = selectitem.Where(m => m.MUSTERIAD.Contains(searchitem));
+			}
+
+			return View(selectitem.ToList());
         }
 
 		public ActionResult Delete(int id)

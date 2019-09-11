@@ -16,7 +16,7 @@ namespace MVC5_StokTakip.Controllers
 		public ActionResult Index(int page=1)
 		{
 			//var readitem = db.TBLKATEGORILER.ToList();
-			var readitem = db.TBLKATEGORILER.ToList().ToPagedList(page,3);
+			var readitem = db.TBLKATEGORILER.ToList().ToPagedList(page,5);
 
 			return View(readitem);
 		}

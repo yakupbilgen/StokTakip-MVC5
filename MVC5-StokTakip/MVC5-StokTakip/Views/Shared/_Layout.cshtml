@@ -13,16 +13,21 @@
             <div class="navbar-header">
                 @Html.ActionLink("Stok Takip Uygulaması", "Index", "Urun", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <div class="navbar-collapse collapse">
+            <div class="navbar-collapse collapse col-md-7">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Kategoriler", "Index", "Kategori")</li>
                     <li>@Html.ActionLink("Ürünler", "Index", "Urun")</li>
                     <li>@Html.ActionLink("Müşteriler", "Index", "Musteri")</li>
                     <li>@Html.ActionLink("Satışlar", "Index", "Satis")</li>
+                </ul>
+            </div>
+            <div class="justify-content-end">
+                <ul class="nav navbar-nav justify-content-end">
                     <li><a href="#">Yardım</a></li>
                     <li><a href="#">İletişim</a></li>
                 </ul>
             </div>
+
         </div>
     </div>
     <div class="container body-content">
