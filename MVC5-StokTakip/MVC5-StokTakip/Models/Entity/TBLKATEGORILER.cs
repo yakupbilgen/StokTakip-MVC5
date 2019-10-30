@@ -22,7 +22,7 @@ namespace MVC5_StokTakip.Models.Entity
         }
     
         public short KATEGORIID { get; set; }
-		[Required(ErrorMessage ="Kategori adý boþ býrakýlamaz!")]
+		//[Required(ErrorMessage ="Kategori adý boþ býrakýlamaz!")]
         public string KATEGORIAD { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -39,6 +39,12 @@ namespace MVC5_StokTakip.Controllers
 		{
 			var insertitem = db.TBLKATEGORILER.Where(m => m.KATEGORIID == item.TBLKATEGORILER.KATEGORIID).FirstOrDefault();
 			item.TBLKATEGORILER = insertitem;
+
+			if (!ModelState.IsValid)
+			{
+				return View(item);
+			}
+			
 			db.TBLURUNLER.Add(item);
 			db.SaveChanges();
 

@@ -1,33 +1,42 @@
-﻿@model MVC5_StokTakip.Models.Entity.TBLURUNLER
+﻿@using MVC5_StokTakip.Models.Entity;
+@model MVC5_StokTakip.Models.Entity.TBLURUNLER
 
 @{
-                /**/
+    /**/
 
-                ViewBag.Title = "Yeni Ürün Ekleme";
-                Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Yeni Ürün Ekleme";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <br />
-<form class="form-group" method="post">
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+    @*<form class="form-group" method="post">*@
     <div>
         <label>Ürün Adı:</label>
-        <input type="text" class="form-control" name="URUNAD" required="Bu alan boş bırakılamaz!" maxlength="50" />
+        <input type="text" class="form-control" name="URUNAD" maxlength="50" />
     </div>
     <div>
         <label>Ürün Markası:</label>
-        <input type="text" class="form-control" name="URUNMARKA" required="" />
+        <input type="text" class="form-control" name="URUNMARKA" />
     </div>
     <div>
         <label>Ürün Kategorisi:</label>
-        @Html.DropDownListFor(m => m.TBLKATEGORILER.KATEGORIID, (List<SelectListItem>)ViewBag.dgr, new { @class = "form-control" })
+        @Html.DropDownListFor(m => m.TBLKATEGORILER.KATEGORIID, (IEnumerable<SelectListItem>)ViewBag.dgr, new { @class = "form-control" })
     </div>
+
     <div>
         <label>Ürün Fiyatı:</label>
-        <input type="text" class="form-control" name="URUNFIYAT" required="" />
+        <input type="text" class="form-control" name="URUNFIYAT" />
     </div>
     <div>
         <label>Ürün Adeti:</label>
-        <input type="text" class="form-control" name="URUNSTOKADET" required="" />
+        @*<input type="text" class="form-control" name="URUNSTOKADET" required="" />*@
+
+        @Html.TextBoxFor(m => m.URUNSTOKADET, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.URUNSTOKADET, "", new { @style = "color:red" })
+
     </div>
     <div>
         <button class="btn btn-info" style="margin-top:10px;" id="btnEkle">Ekle</button>
@@ -38,5 +47,6 @@
             alert('Ürün Ekleme İşlemi Başarılı');
         });
     </script>
-</form>
+    @*</form>*@
+}
 

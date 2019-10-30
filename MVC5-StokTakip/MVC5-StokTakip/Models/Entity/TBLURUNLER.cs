@@ -11,8 +11,9 @@ namespace MVC5_StokTakip.Models.Entity
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class TBLURUNLER
+	using System.ComponentModel.DataAnnotations;
+
+	public partial class TBLURUNLER
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TBLURUNLER()
@@ -24,8 +25,10 @@ namespace MVC5_StokTakip.Models.Entity
         public string URUNAD { get; set; }
         public string URUNMARKA { get; set; }
         public Nullable<short> URUNKATEGORI { get; set; }
-        public Nullable<decimal> URUNFIYAT { get; set; }
-        public Nullable<byte> URUNSTOKADET { get; set; }
+		public Nullable<decimal> URUNFIYAT { get; set; }
+		[Required(ErrorMessage = "Stok adeti giriniz")]
+		[Range(1, 100, ErrorMessage = "Stok adeti 1 ile 100 arasýnda olabilir.")]
+		public Nullable<byte> URUNSTOKADET { get; set; }
     
         public virtual TBLKATEGORILER TBLKATEGORILER { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

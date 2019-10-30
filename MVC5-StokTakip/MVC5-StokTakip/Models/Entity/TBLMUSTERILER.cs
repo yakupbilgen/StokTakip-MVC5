@@ -22,11 +22,11 @@ namespace MVC5_StokTakip.Models.Entity
         }
     
         public int MUSTERIID { get; set; }
-		[Required(ErrorMessage ="Müþteri adý boþ býrakýlamaz!")]
-		[StringLength(50, ErrorMessage ="Müþteri adý 50 karakterden uzun olamaz!")]
+		//[Required(ErrorMessage ="Müþteri adý boþ býrakýlamaz!")]
+		//[StringLength(50, ErrorMessage ="Müþteri adý 50 karakterden uzun olamaz!")]
         public string MUSTERIAD { get; set; }
-		[Required(ErrorMessage = "Müþteri soyadý boþ býrakýlamaz!")]
-		[StringLength(50,ErrorMessage ="Müþteri soyadý 50 karakterden uzun olamaz!")]
+		//[Required(ErrorMessage = "Müþteri soyadý boþ býrakýlamaz!")]
+		//[StringLength(50,ErrorMessage ="Müþteri soyadý 50 karakterden uzun olamaz!")]
 		public string MUSTERISOYAD { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
